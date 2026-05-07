@@ -25,12 +25,13 @@ describe('default content', () => {
     expect(content.defaultBoard.title).toBe('교생 선생님에 대해 알아봐요');
     expect(
       content.defaultBoard.tiles.some(
-        (tile) => tile.label.includes('보호막') || tile.label === '쉬어가기' || tile.label === '휴식',
+        (tile) => tile.label.includes('보호막') || tile.label === '쉬어가기' || tile.label === '휴식' || tile.label === '생각 정리',
       ),
     ).toBe(false);
     expect(content.defaultBoard.tiles[3]).toMatchObject({ type: 'event', label: '1칸 뒤로', icon: 'back', event: { kind: 'moveBack', steps: 1 } });
     expect(content.defaultBoard.tiles[5]).toMatchObject({ type: 'event', label: '1칸 뒤로', icon: 'back', event: { kind: 'moveBack', steps: 1 } });
     expect(content.defaultBoard.tiles[12]).toMatchObject({ type: 'event', label: '2칸 뒤로', icon: 'back', event: { kind: 'moveBack', steps: 2 } });
+    expect(content.defaultBoard.tiles[17]).toMatchObject({ type: 'event', label: '1칸 뒤로', icon: 'back', event: { kind: 'moveBack', steps: 1 } });
     expect(content.defaultBoard.tiles[26]).toMatchObject({ type: 'event', label: '1칸 뒤로', icon: 'back', event: { kind: 'moveBack', steps: 1 } });
     expect(content.defaultBoard.tiles[2]).toMatchObject({ label: '교생 나이', icon: 'cake', questionId: 'student-teacher-q2' });
     expect(content.defaultBoard.tiles[27]).toMatchObject({ label: '첫인상', icon: 'sparkles', questionId: 'student-teacher-q16' });

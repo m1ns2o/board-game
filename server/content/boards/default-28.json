@@ -20,7 +20,7 @@
     { "id": "e05", "type": "event", "label": "한 번 더", "icon": "star", "event": { "kind": "bonusTurn" } },
     { "id": "q09", "type": "quiz", "label": "요리 실력", "icon": "utensils", "questionId": "student-teacher-q9" },
     { "id": "q10", "type": "quiz", "label": "아이돌 취향", "icon": "mic", "questionId": "student-teacher-q10" },
-    { "id": "safe03", "type": "safe", "label": "생각 정리", "icon": "sparkles" },
+    { "id": "e10", "type": "event", "label": "1칸 뒤로", "icon": "back", "event": { "kind": "moveBack", "steps": 1 } },
     { "id": "q11", "type": "quiz", "label": "졸업공연", "icon": "music", "questionId": "student-teacher-q11" },
     { "id": "e06", "type": "event", "label": "칭찬 카드 +1", "icon": "gift", "event": { "kind": "moveForward", "steps": 1 } },
     { "id": "q12", "type": "quiz", "label": "퍼스널 컬러", "icon": "palette", "questionId": "student-teacher-q12" },
