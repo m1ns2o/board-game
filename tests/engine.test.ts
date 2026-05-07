@@ -266,6 +266,30 @@ describe('game engine', () => {
     expect(wrongTurn).toThrow('현재 차례');
   });
 
+  it('allows six playable teams without counting the spectator host', () => {
+    const engine = new GameRoomEngine({
+      code: 'SIX',
+      hostClientId: 'host',
+      hostName: '진행자',
+      hostIsSpectator: true,
+      board,
+      questionPack: pack,
+      now: 1,
+    });
+
+    ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'].forEach((playerId, index) => {
+      engine.addOrReconnectPlayer(playerId, `${index + 1}팀`);
+    });
+
+    const state = engine.getPublicState();
+
+    expect(engine.playerCount).toBe(6);
+    expect(state.players).toHaveLength(7);
+    expect(state.players.find((player) => player.id === 'host')?.isSpectator).toBe(true);
+    expect(state.players.find((player) => player.id === 'p6')?.tokenIndex).toBe(5);
+    expect(() => engine.addOrReconnectPlayer('p7', '7팀')).toThrow('6팀');
+  });
+
   it('lets the host override a wrong answer as correct before the next roll', () => {
     const engine = spectatorHostRoom();
     engine.rollDice('p1', 3);

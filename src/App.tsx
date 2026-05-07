@@ -46,7 +46,7 @@ const CLIENT_ID_KEY = 'quiz-board-client-id';
 const LEGACY_NAME_KEY = 'quiz-board-player-name';
 const LEGACY_LAST_ROOM_KEY = 'quiz-board-last-room';
 const DICE_ROLL_MS = 2200;
-const tokenColors = ['#ff6b6b', '#33c3a5', '#5f7cff', '#f4b63d'];
+const tokenColors = ['#ff6b6b', '#33c3a5', '#5f7cff', '#f4b63d', '#9b5de5', '#00a8cc'];
 
 export function App() {
   const [clientId] = useState(getOrCreateClientId);
@@ -651,7 +651,7 @@ function TileCell({ tile, index, row, col, players, isTarget, isCurrent }: TileC
       <div className="tile-index">{index}</div>
       <Icon size={18} />
       <strong>{tile.label}</strong>
-      <div className="token-stack">
+      <div className={`token-stack ${players.length > 4 ? 'is-crowded' : ''}`}>
         {players.map((player) => (
           <span
             key={player.id}
@@ -1011,7 +1011,9 @@ function RoomControls({
                 <small>
                   {player.isSpectator
                     ? `${player.connected ? '접속 중' : '재접속 대기'} · 관전자`
-                    : `${player.connected ? '접속 중' : '재접속 대기'} · ${player.position}번 칸 · 보호막 ${player.shieldCount}`}
+                    : `${player.connected ? '접속 중' : '재접속 대기'} · ${player.position}번 칸${
+                        player.shieldCount > 0 ? ` · 보호막 ${player.shieldCount}` : ''
+                      }`}
                 </small>
               </div>
               {player.isSpectator ? <span className="lap-chip is-spectator">관리</span> : <span className="lap-chip">{player.lap}/1</span>}

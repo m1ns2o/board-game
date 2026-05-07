@@ -22,7 +22,6 @@ interface ClientPayload {
   hostIsSpectator?: boolean;
 }
 
-const content = loadContent();
 const rooms = new Map<string, GameRoomEngine>();
 const socketToClient = new Map<string, { clientId: string; roomCode: string }>();
 
@@ -35,13 +34,15 @@ export function attachGameSocketServer(server: HttpServer) {
   });
 
   io.on('connection', (socket) => {
+    const connectionContent = loadContent();
     socket.emit('serverReady', {
-      boards: content.boards.map(({ id, title }) => ({ id, title })),
-      questionPacks: content.questionPacks.map(({ id, title }) => ({ id, title })),
+      boards: connectionContent.boards.map(({ id, title }) => ({ id, title })),
+      questionPacks: connectionContent.questionPacks.map(({ id, title }) => ({ id, title })),
     });
 
     socket.on('createRoom', (payload: ClientPayload, ack?: Ack<RoomState>) => {
       handle(ack, () => {
+        const content = loadContent();
         const clientId = requireString(payload.clientId, 'clientId');
         const name = requireString(payload.name, 'name');
         const code = uniqueRoomCode();

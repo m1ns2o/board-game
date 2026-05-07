@@ -113,6 +113,41 @@ describe('socket multiplayer flow', () => {
     expect(hostRoll.error).toContain('현재 차례');
   });
 
+  it('allows six teams to join an admin spectator room and rejects the seventh team', async () => {
+    const [host, ...players] = await Promise.all(Array.from({ length: 8 }, () => connectClient()));
+    const created = await emitAck<RoomState>(host, 'createRoom', {
+      clientId: 'host',
+      name: '진행자',
+      hostIsSpectator: true,
+    });
+    expect(created.ok).toBe(true);
+    const code = created.data!.code;
+
+    let latestState: RoomState | undefined;
+    for (let index = 0; index < 6; index += 1) {
+      const joined = await emitAck<RoomState>(players[index], 'joinRoom', {
+        code,
+        clientId: `p${index + 1}`,
+        name: `${index + 1}팀`,
+      });
+      expect(joined.ok).toBe(true);
+      latestState = joined.data;
+    }
+
+    expect(latestState?.players.filter((player) => !player.isSpectator)).toHaveLength(6);
+    expect(latestState?.players).toHaveLength(7);
+    expect(latestState?.players.find((player) => player.id === 'p6')?.tokenIndex).toBe(5);
+
+    const rejected = await emitAck<RoomState>(players[6], 'joinRoom', {
+      code,
+      clientId: 'p7',
+      name: '7팀',
+    });
+
+    expect(rejected.ok).toBe(false);
+    expect(rejected.error).toContain('6팀');
+  });
+
   it('allows the admin host to override a wrong answer as correct', async () => {
     const host = await connectClient();
     const p1 = await connectClient();

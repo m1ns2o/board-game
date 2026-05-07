@@ -14,7 +14,7 @@ import type {
   RoomState,
 } from '../../src/shared/types';
 
-const MAX_PLAYERS = 4;
+const MAX_PLAYERS = 6;
 const MIN_PLAYERS = 2;
 const MAX_EVENT_CHAIN_DEPTH = 8;
 
@@ -554,7 +554,7 @@ export class GameRoomEngine {
       throw new GameError('게임이 이미 시작되어 새 플레이어가 참가할 수 없습니다.');
     }
     if (this.getPlayablePlayers().length >= MAX_PLAYERS) {
-      throw new GameError('이 방은 이미 4명이 모두 참가했습니다.');
+      throw new GameError('이 방은 이미 6팀이 모두 참가했습니다.');
     }
   }
 
@@ -663,7 +663,7 @@ export class GameRoomEngine {
     }
 
     if (tile.type === 'safe') {
-      this.pushLog(`${player.name}님이 휴식 칸에 머물렀습니다.`, 'info');
+      this.pushLog(`${player.name}님이 ${tile.label} 칸에 머물렀습니다.`, 'info');
     } else if (tile.type === 'start') {
       this.pushLog(`${player.name}님이 출발 칸에 도착했습니다.`, 'info');
     }
