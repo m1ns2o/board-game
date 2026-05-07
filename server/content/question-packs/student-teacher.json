@@ -1,0 +1,150 @@
+{
+  "id": "student-teacher-quiz",
+  "title": "교생 선생님에 대해 알아봐요",
+  "questions": [
+    {
+      "id": "student-teacher-q1",
+      "prompt": "교생 선생님은 보통 아침 몇 시쯤 일어날까요?",
+      "answer": "6시 반",
+      "aliases": ["6시 30분", "오전 6시 반", "오전 6시 30분", "6:30", "630", "여섯 시 반"],
+      "patterns": ["^(오전)?(6|여섯)시?(반|30분?)$|^(오전)?630$"],
+      "category": "생활",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q2",
+      "prompt": "교생 선생님의 나이는 몇 살일까요?",
+      "answer": "25살",
+      "aliases": ["25세", "스물다섯 살", "스물다섯", "이십오 살", "이십오세"],
+      "patterns": ["^(25|스물다섯|이십오)(살|세)?$"],
+      "category": "교생 선생님",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q3",
+      "prompt": "교생 선생님은 고등학교를 꽤 멀리 다녔습니다. 등교하는 데 얼마나 걸렸을까요?",
+      "answer": "1시간 반",
+      "aliases": ["1시간 30분", "한 시간 반", "한시간반", "90분", "1시간 30분 정도"],
+      "patterns": ["^(1|한)시간(반|30분?)$|^90분$"],
+      "category": "학창 시절",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q4",
+      "prompt": "교생 선생님과 함께 출근하는 다른 교생 선생님들의 담당 과목은 무엇일까요?",
+      "answer": "환경, 역사",
+      "aliases": ["환경 역사", "역사 환경", "환경과 역사", "역사와 환경", "환경 및 역사", "역사 및 환경", "환경/역사", "역사/환경"],
+      "patterns": ["^(환경역사|역사환경|환경과역사|역사와환경|환경및역사|역사및환경)$"],
+      "category": "학교",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q5",
+      "prompt": "교생 선생님의 고향, 즉 출신 지역은 어디일까요?",
+      "answer": "서울",
+      "aliases": ["서울시", "서울특별시"],
+      "patterns": ["^서울(시|특별시)?$"],
+      "category": "고향",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q6",
+      "prompt": "교생 선생님의 MBTI는 무엇일까요?",
+      "answer": "ISTJ",
+      "aliases": ["잇티제", "ISTJ형"],
+      "patterns": ["^istj형?$|^잇티제$"],
+      "category": "취향",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q7",
+      "prompt": "교생 선생님이 출근길에 가장 자주 듣는 음악 장르는 무엇일까요?",
+      "answer": "밴드",
+      "aliases": ["밴드 음악", "록", "락", "록 음악", "락 음악", "인디 밴드", "인디밴드"],
+      "patterns": ["^(인디)?밴드(음악)?$|^(록|락)(음악)?$"],
+      "category": "취향",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q8",
+      "prompt": "교생 선생님이 처음 코딩을 시작했던 나이는 몇 살일까요?",
+      "answer": "15살",
+      "aliases": ["15세", "열다섯 살", "열다섯", "중2", "중학교 2학년", "중학교2학년"],
+      "patterns": ["^(15|열다섯)(살|세)?$|^중(학교)?2학년$|^중2$"],
+      "category": "코딩",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q9",
+      "prompt": "교생 선생님이 가장 자신 있는 요리는 무엇일까요?",
+      "answer": "파스타",
+      "aliases": ["알리오 올리오", "알리오올리오", "오일 파스타", "오일파스타"],
+      "patterns": ["^파스타$|^알리오올리오$|^오일파스타$"],
+      "category": "취향",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q10",
+      "prompt": "교생 선생님이 좋아했던 아이돌 그룹은 누구일까요?",
+      "answer": "아이즈원",
+      "aliases": ["아이즈 원", "IZ*ONE", "IZONE"],
+      "patterns": ["^아이즈원$|^izone$"],
+      "category": "취향",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q11",
+      "prompt": "교생 선생님은 중학교 졸업공연에서 워너원의 노래에 맞춰 춤을 췄습니다. 어떤 노래였을까요?",
+      "answer": "에너제틱",
+      "aliases": ["Energetic", "워너원 에너제틱", "워너원 energetic"],
+      "patterns": ["^에너제틱$|^energetic$|^워너원에너제틱$"],
+      "category": "학창 시절",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q12",
+      "prompt": "교생 선생님의 퍼스널 컬러는 무엇일까요?",
+      "answer": "겨울 쿨톤",
+      "aliases": ["겨울쿨톤", "겨울 쿨", "겨울쿨", "겨쿨", "윈터 쿨톤"],
+      "patterns": ["^겨울쿨(톤)?$|^겨쿨$|^윈터쿨톤$"],
+      "category": "취향",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q13",
+      "prompt": "교생 선생님이 카페에서 주로 시키는 음료는 무엇일까요?",
+      "answer": "녹차라떼",
+      "aliases": ["녹차 라떼", "그린티 라떼", "그린티라떼", "말차 라떼", "말차라떼"],
+      "patterns": ["^(녹차|그린티|말차)라떼$"],
+      "category": "취향",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q14",
+      "prompt": "교생 선생님은 주말 여가시간에 주로 무엇을 할까요?",
+      "answer": "드라이브",
+      "aliases": ["카페 가기", "카페가기", "카페", "드라이브 카페", "드라이브와 카페", "카페 투어"],
+      "patterns": ["^드라이브$|^카페(가기|투어)?$|^드라이브(와)?카페(가기)?$"],
+      "category": "생활",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q15",
+      "prompt": "교생 선생님이 고등학교 때 장래희망란에 썼던 직업은 무엇이었을까요?",
+      "answer": "교사",
+      "aliases": ["교생 선생님", "선생님", "개발자", "프로그래머", "교사 개발자", "교사와 개발자", "교사 프로그래머", "개발자 교사"],
+      "patterns": ["^(교사|선생님|개발자|프로그래머)$|^(교사|선생님)(와)?(개발자|프로그래머)$|^(개발자|프로그래머)(와)?(교사|선생님)$"],
+      "category": "진로",
+      "difficulty": 1
+    },
+    {
+      "id": "student-teacher-q16",
+      "prompt": "교생 선생님의 첫인상은 어땠나요? 자유롭게 적어 보세요.",
+      "answer": "",
+      "aliases": [],
+      "patterns": [],
+      "category": "자유 답변",
+      "difficulty": 1
+    }
+  ]
+}
