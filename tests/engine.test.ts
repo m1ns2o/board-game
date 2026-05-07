@@ -266,9 +266,9 @@ describe('game engine', () => {
     expect(wrongTurn).toThrow('현재 차례');
   });
 
-  it('allows six playable teams without counting the spectator host', () => {
+  it('allows seven playable teams without counting the spectator host', () => {
     const engine = new GameRoomEngine({
-      code: 'SIX',
+      code: 'SEVEN',
       hostClientId: 'host',
       hostName: '진행자',
       hostIsSpectator: true,
@@ -277,17 +277,17 @@ describe('game engine', () => {
       now: 1,
     });
 
-    ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'].forEach((playerId, index) => {
+    ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7'].forEach((playerId, index) => {
       engine.addOrReconnectPlayer(playerId, `${index + 1}팀`);
     });
 
     const state = engine.getPublicState();
 
-    expect(engine.playerCount).toBe(6);
-    expect(state.players).toHaveLength(7);
+    expect(engine.playerCount).toBe(7);
+    expect(state.players).toHaveLength(8);
     expect(state.players.find((player) => player.id === 'host')?.isSpectator).toBe(true);
-    expect(state.players.find((player) => player.id === 'p6')?.tokenIndex).toBe(5);
-    expect(() => engine.addOrReconnectPlayer('p7', '7팀')).toThrow('6팀');
+    expect(state.players.find((player) => player.id === 'p7')?.tokenIndex).toBe(6);
+    expect(() => engine.addOrReconnectPlayer('p8', '8팀')).toThrow('7팀');
   });
 
   it('lets the host override a wrong answer as correct before the next roll', () => {

@@ -113,8 +113,8 @@ describe('socket multiplayer flow', () => {
     expect(hostRoll.error).toContain('현재 차례');
   });
 
-  it('allows six teams to join an admin spectator room and rejects the seventh team', async () => {
-    const [host, ...players] = await Promise.all(Array.from({ length: 8 }, () => connectClient()));
+  it('allows seven teams to join an admin spectator room and rejects the eighth team', async () => {
+    const [host, ...players] = await Promise.all(Array.from({ length: 9 }, () => connectClient()));
     const created = await emitAck<RoomState>(host, 'createRoom', {
       clientId: 'host',
       name: '진행자',
@@ -124,7 +124,7 @@ describe('socket multiplayer flow', () => {
     const code = created.data!.code;
 
     let latestState: RoomState | undefined;
-    for (let index = 0; index < 6; index += 1) {
+    for (let index = 0; index < 7; index += 1) {
       const joined = await emitAck<RoomState>(players[index], 'joinRoom', {
         code,
         clientId: `p${index + 1}`,
@@ -134,18 +134,18 @@ describe('socket multiplayer flow', () => {
       latestState = joined.data;
     }
 
-    expect(latestState?.players.filter((player) => !player.isSpectator)).toHaveLength(6);
-    expect(latestState?.players).toHaveLength(7);
-    expect(latestState?.players.find((player) => player.id === 'p6')?.tokenIndex).toBe(5);
+    expect(latestState?.players.filter((player) => !player.isSpectator)).toHaveLength(7);
+    expect(latestState?.players).toHaveLength(8);
+    expect(latestState?.players.find((player) => player.id === 'p7')?.tokenIndex).toBe(6);
 
-    const rejected = await emitAck<RoomState>(players[6], 'joinRoom', {
+    const rejected = await emitAck<RoomState>(players[7], 'joinRoom', {
       code,
-      clientId: 'p7',
-      name: '7팀',
+      clientId: 'p8',
+      name: '8팀',
     });
 
     expect(rejected.ok).toBe(false);
-    expect(rejected.error).toContain('6팀');
+    expect(rejected.error).toContain('7팀');
   });
 
   it('allows the admin host to override a wrong answer as correct', async () => {

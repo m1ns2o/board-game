@@ -579,15 +579,15 @@ input:focus {
 }
 
 .token-stack.is-crowded {
-  width: min(92px, calc(100% - 6px));
-  gap: 2px;
+  width: min(94px, calc(100% - 6px));
+  gap: 1px;
 }
 
 .token-stack.is-crowded .player-token {
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
   border-width: 2px;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .board-center {

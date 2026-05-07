@@ -14,7 +14,7 @@ import type {
   RoomState,
 } from '../../src/shared/types';
 
-const MAX_PLAYERS = 6;
+const MAX_PLAYERS = 7;
 const MIN_PLAYERS = 2;
 const MAX_EVENT_CHAIN_DEPTH = 8;
 
@@ -554,7 +554,7 @@ export class GameRoomEngine {
       throw new GameError('게임이 이미 시작되어 새 플레이어가 참가할 수 없습니다.');
     }
     if (this.getPlayablePlayers().length >= MAX_PLAYERS) {
-      throw new GameError('이 방은 이미 6팀이 모두 참가했습니다.');
+      throw new GameError('이 방은 이미 7팀이 모두 참가했습니다.');
     }
   }
 

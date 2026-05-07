@@ -46,7 +46,7 @@ const CLIENT_ID_KEY = 'quiz-board-client-id';
 const LEGACY_NAME_KEY = 'quiz-board-player-name';
 const LEGACY_LAST_ROOM_KEY = 'quiz-board-last-room';
 const DICE_ROLL_MS = 2200;
-const tokenColors = ['#ff6b6b', '#33c3a5', '#5f7cff', '#f4b63d', '#9b5de5', '#00a8cc'];
+const tokenColors = ['#ff6b6b', '#33c3a5', '#5f7cff', '#f4b63d', '#9b5de5', '#00a8cc', '#ff8fab'];
 
 export function App() {
   const [clientId] = useState(getOrCreateClientId);
